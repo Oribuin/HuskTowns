@@ -2,8 +2,11 @@ package net.william278.husktowns.hook.map;
 
 import de.bluecolored.bluemap.api.BlueMapAPI;
 import de.bluecolored.bluemap.api.BlueMapMap;
-import de.bluecolored.bluemap.api.marker.*;
+import de.bluecolored.bluemap.api.marker.Marker;
+import de.bluecolored.bluemap.api.marker.MarkerAPI;
+import de.bluecolored.bluemap.api.marker.MarkerSet;
 import de.bluecolored.bluemap.api.marker.Shape;
+import de.bluecolored.bluemap.api.marker.ShapeMarker;
 import net.william278.husktowns.HuskTowns;
 import net.william278.husktowns.chunk.ClaimedChunk;
 import net.william278.husktowns.town.Town;

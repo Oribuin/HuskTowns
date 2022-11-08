@@ -281,8 +281,7 @@ public class CrossServerMessageHandler {
                         final String[] returningPlayers = message.getMessageData().split("£");
                         HuskTowns.getPlayerList().addPlayers(returningPlayers);
                     }
-                    default ->
-                            HuskTowns.getInstance().getLogger().log(Level.WARNING, "Received a HuskTowns plugin message with an unrecognised type. Is your version of HuskTowns up to date?");
+                    default -> HuskTowns.getInstance().getLogger().log(Level.WARNING, "Received a HuskTowns plugin message with an unrecognised type. Is your version of HuskTowns up to date?");
                 }
             }
         }

@@ -18,7 +18,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.StringJoiner;
+import java.util.UUID;
 import java.util.logging.Level;
 
 public class ClaimCommand extends CommandBase {
@@ -29,7 +35,7 @@ public class ClaimCommand extends CommandBase {
     @Override
     protected void onCommand(Player player, Command command, String label, String[] args) {
         if (!HuskTowns.getTownDataCache().hasLoaded() || !HuskTowns.getClaimCache().hasLoaded() || !HuskTowns.getPlayerCache().hasLoaded() || !HuskTowns.getTownBonusesCache().hasLoaded()) {
-            MessageManager.sendMessage(player,"error_cache_updating", "system");
+            MessageManager.sendMessage(player, "error_cache_updating", "system");
             return;
         }
         if (args.length > 0) {

@@ -11,21 +11,29 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.UUID;
 
 public class ClaimListCommand extends CommandBase {
 
     // Cached claim list handling
-    private static final HashMap<UUID,HashMap<String, Town>> cachedClaimLists = new HashMap<>();
+    private static final HashMap<UUID, HashMap<String, Town>> cachedClaimLists = new HashMap<>();
+
     public static Town getPlayerCachedClaimLists(UUID uuid, String townName) {
         return cachedClaimLists.get(uuid).get(townName);
     }
+
     public static boolean cachedClaimListContains(UUID uuid, String townName) {
         if (cachedClaimLists.containsKey(uuid)) {
             return cachedClaimLists.get(uuid).containsKey(townName);
         }
         return false;
     }
+
     public static void addCachedClaimList(UUID uuid, String townName, Town town) {
         if (!cachedClaimLists.containsKey(uuid)) {
             cachedClaimLists.put(uuid, new HashMap<>());

@@ -1,18 +1,18 @@
 package net.william278.husktowns;
 
-import net.william278.husktowns.cache.*;
-import net.william278.husktowns.flags.Flag;
-import net.william278.husktowns.listener.ActionType;
-import net.william278.husktowns.town.Town;
-import net.william278.husktowns.util.AccessManager;
-import net.william278.husktowns.data.DataManager;
-import net.william278.husktowns.chunk.ClaimedChunk;
-import net.william278.husktowns.town.TownBonus;
-import net.william278.husktowns.town.TownRole;
-import net.william278.husktowns.util.TownLimitsUtil;
+import net.william278.husktowns.cache.CacheStatus;
 import net.william278.husktowns.cache.ClaimCache;
 import net.william278.husktowns.cache.PlayerCache;
 import net.william278.husktowns.cache.TownDataCache;
+import net.william278.husktowns.chunk.ClaimedChunk;
+import net.william278.husktowns.data.DataManager;
+import net.william278.husktowns.flags.Flag;
+import net.william278.husktowns.listener.ActionType;
+import net.william278.husktowns.town.Town;
+import net.william278.husktowns.town.TownBonus;
+import net.william278.husktowns.town.TownRole;
+import net.william278.husktowns.util.AccessManager;
+import net.william278.husktowns.util.TownLimitsUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -285,8 +285,7 @@ public class HuskTownsAPI {
             return true;
         }
         return switch (AccessManager.getPlayerAccess(uuid, actionType, getClaimedChunk(location), true)) {
-            case CAN_PERFORM_ACTION_TRUSTED_ACCESS, CAN_PERFORM_ACTION_TOWN_FARM, CAN_PERFORM_ACTION_PLOT_MEMBER, CAN_PERFORM_ACTION_PLOT_OWNER, CAN_PERFORM_ACTION_IGNORING_CLAIMS, CAN_PERFORM_ACTION_ADMIN_CLAIM_ACCESS, CAN_PERFORM_ACTION_PUBLIC_BUILD_ACCESS_FLAG ->
-                    true;
+            case CAN_PERFORM_ACTION_TRUSTED_ACCESS, CAN_PERFORM_ACTION_TOWN_FARM, CAN_PERFORM_ACTION_PLOT_MEMBER, CAN_PERFORM_ACTION_PLOT_OWNER, CAN_PERFORM_ACTION_IGNORING_CLAIMS, CAN_PERFORM_ACTION_ADMIN_CLAIM_ACCESS, CAN_PERFORM_ACTION_PUBLIC_BUILD_ACCESS_FLAG -> true;
             default -> false;
         };
     }

@@ -3,14 +3,18 @@ package net.william278.husktowns.flags;
 import de.themoep.minedown.MineDown;
 import net.william278.husktowns.HuskTowns;
 import net.william278.husktowns.MessageManager;
-import net.william278.husktowns.listener.ActionType;
 import net.william278.husktowns.cache.ClaimCache;
 import net.william278.husktowns.cache.TownDataCache;
 import net.william278.husktowns.chunk.ClaimedChunk;
+import net.william278.husktowns.listener.ActionType;
 import org.bukkit.Location;
 import org.bukkit.World;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public abstract class Flag {
 

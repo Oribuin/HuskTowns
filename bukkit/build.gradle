@@ -5,7 +5,7 @@ dependencies {
     implementation 'org.bstats:bstats-bukkit:3.0.0'
     implementation 'io.papermc:paperlib:1.0.7'
     implementation 'net.william278:DesertWell:1.0'
-    implementation ('com.zaxxer:HikariCP:5.0.1') {
+    implementation('com.zaxxer:HikariCP:5.0.1') {
         exclude module: 'slf4j-api'
     }
 

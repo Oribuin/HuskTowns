@@ -2,10 +2,10 @@ package net.william278.husktowns.command;
 
 import net.william278.husktowns.HuskTowns;
 import net.william278.husktowns.MessageManager;
-import net.william278.husktowns.data.DataManager;
 import net.william278.husktowns.cache.ClaimCache;
 import net.william278.husktowns.cache.PlayerCache;
 import net.william278.husktowns.chunk.ClaimedChunk;
+import net.william278.husktowns.data.DataManager;
 import net.william278.husktowns.util.NameAutoCompleter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -18,7 +18,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 
 public class PlotCommand extends CommandBase {

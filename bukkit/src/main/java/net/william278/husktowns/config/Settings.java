@@ -3,12 +3,26 @@ package net.william278.husktowns.config;
 import dev.dejvokep.boostedyaml.YamlDocument;
 import net.william278.husktowns.HuskTowns;
 import net.william278.husktowns.chunk.ClaimedChunk;
-import net.william278.husktowns.flags.*;
+import net.william278.husktowns.flags.ExplosionDamageFlag;
+import net.william278.husktowns.flags.FireDamageFlag;
+import net.william278.husktowns.flags.Flag;
+import net.william278.husktowns.flags.MobGriefingFlag;
+import net.william278.husktowns.flags.MonsterSpawningFlag;
+import net.william278.husktowns.flags.PublicBuildAccessFlag;
+import net.william278.husktowns.flags.PublicContainerAccessFlag;
+import net.william278.husktowns.flags.PublicFarmAccessFlag;
+import net.william278.husktowns.flags.PublicInteractAccessFlag;
+import net.william278.husktowns.flags.PvpFlag;
 import net.william278.husktowns.town.TownRole;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 
 public class Settings {

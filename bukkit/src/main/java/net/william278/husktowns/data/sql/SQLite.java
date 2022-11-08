@@ -2,13 +2,23 @@ package net.william278.husktowns.data.sql;
 
 import com.zaxxer.hikari.HikariDataSource;
 import net.william278.husktowns.HuskTowns;
-import net.william278.husktowns.flags.*;
+import net.william278.husktowns.flags.ExplosionDamageFlag;
+import net.william278.husktowns.flags.FireDamageFlag;
+import net.william278.husktowns.flags.MobGriefingFlag;
+import net.william278.husktowns.flags.MonsterSpawningFlag;
+import net.william278.husktowns.flags.PublicBuildAccessFlag;
+import net.william278.husktowns.flags.PublicContainerAccessFlag;
+import net.william278.husktowns.flags.PublicFarmAccessFlag;
+import net.william278.husktowns.flags.PublicInteractAccessFlag;
+import net.william278.husktowns.flags.PvpFlag;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -66,7 +76,7 @@ public class SQLite extends Database {
                     "`plot_owner_id` integer REFERENCES " + HuskTowns.getSettings().playerTable + " (`id`) ON DELETE SET NULL" +
                     ");",
 
-            "CREATE UNIQUE INDEX IF NOT EXISTS " + HuskTowns.getSettings().claimsTable + "_ix" + " ON " +  HuskTowns.getSettings().claimsTable  + "(server, world, chunk_x, chunk_z);",
+            "CREATE UNIQUE INDEX IF NOT EXISTS " + HuskTowns.getSettings().claimsTable + "_ix" + " ON " + HuskTowns.getSettings().claimsTable + "(server, world, chunk_x, chunk_z);",
 
             "CREATE TABLE IF NOT EXISTS " + HuskTowns.getSettings().bonusesTable + " (" +
                     "`id` integer PRIMARY KEY," +

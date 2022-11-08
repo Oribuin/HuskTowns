@@ -1,13 +1,13 @@
 package net.william278.husktowns.command;
 
 import de.themoep.minedown.MineDown;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.william278.husktowns.HuskTowns;
 import net.william278.husktowns.MessageManager;
+import net.william278.husktowns.cache.PlayerCache;
 import net.william278.husktowns.config.Settings;
 import net.william278.husktowns.data.message.CrossServerMessageHandler;
 import net.william278.husktowns.data.message.Message;
-import net.william278.husktowns.cache.PlayerCache;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;

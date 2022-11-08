@@ -2,8 +2,8 @@ package net.william278.husktowns.command;
 
 import net.william278.husktowns.HuskTowns;
 import net.william278.husktowns.MessageManager;
-import net.william278.husktowns.data.DataManager;
 import net.william278.husktowns.cache.ClaimCache;
+import net.william278.husktowns.data.DataManager;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;

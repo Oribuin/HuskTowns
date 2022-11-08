@@ -5,7 +5,22 @@ import net.william278.husktowns.MessageManager;
 import net.william278.husktowns.command.subcommands.ShortcutTownSubCommand;
 import net.william278.husktowns.command.subcommands.SubCommand;
 import net.william278.husktowns.command.subcommands.TownSubCommand;
-import net.william278.husktowns.command.subcommands.town.*;
+import net.william278.husktowns.command.subcommands.town.TownBioSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownCreateSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownDepositSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownDisbandSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownFarewellSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownFlagSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownGreetingSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownHelpSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownInfoSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownLeaveSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownPlayerSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownPublicSpawnSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownRenameSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownSetSpawnSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownSettingsSubCommand;
+import net.william278.husktowns.command.subcommands.town.TownSpawnSubCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -118,12 +133,9 @@ public class TownCommand extends CommandBase {
                         if (currentSubArgIndex < subCommandArgs.length - 2) {
                             String currentSubArg = subCommandArgs[currentSubArgIndex + 2];
                             final List<String> completionOptions = switch (currentSubArg) {
-                                case "<town>", "[town]", "<town_name>", "[town_name]" ->
-                                        new ArrayList<>(HuskTowns.getTownDataCache().getPublicSpawnTowns());
-                                case "<town_member>, [town_member]" ->
-                                        new ArrayList<>(HuskTowns.getPlayerCache().getPlayersInTown(HuskTowns.getPlayerCache().getPlayerTown(((Player) sender).getUniqueId())));
-                                case "<player>", "[player]", "<player/accept/decline>" ->
-                                        new ArrayList<>(HuskTowns.getPlayerList().getPlayers());
+                                case "<town>", "[town]", "<town_name>", "[town_name]" -> new ArrayList<>(HuskTowns.getTownDataCache().getPublicSpawnTowns());
+                                case "<town_member>, [town_member]" -> new ArrayList<>(HuskTowns.getPlayerCache().getPlayersInTown(HuskTowns.getPlayerCache().getPlayerTown(((Player) sender).getUniqueId())));
+                                case "<player>", "[player]", "<player/accept/decline>" -> new ArrayList<>(HuskTowns.getPlayerList().getPlayers());
                                 case "[sort_by]" -> getSortByTypes();
                                 default -> Collections.singletonList(currentSubArg);
                             };

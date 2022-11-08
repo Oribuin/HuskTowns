@@ -13,7 +13,7 @@ public class DemoteCommand extends CommandBase {
             String playerName = args[0];
             DataManager.demotePlayer(player, playerName);
         } else {
-            MessageManager.sendMessage(player,"error_invalid_syntax", command.getUsage());
+            MessageManager.sendMessage(player, "error_invalid_syntax", command.getUsage());
         }
     }
 }

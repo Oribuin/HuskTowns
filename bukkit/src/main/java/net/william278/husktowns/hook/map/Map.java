@@ -9,16 +9,21 @@ import java.util.Set;
 import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
 
 public abstract class Map {
-    public Map() { }
+    public Map() {
+    }
 
     public static final String MARKER_SET_ID = "husktowns.towns";
 
     public abstract void initialize();
 
     public abstract void addMarker(ClaimedChunk claimedChunk);
+
     public abstract void removeMarker(ClaimedChunk claimedChunk);
+
     public abstract void addMarkers(Set<ClaimedChunk> claimedChunks);
+
     public abstract void removeMarkers(Set<ClaimedChunk> claimedChunks);
+
     public abstract void clearMarkers();
 
     public String getClaimInfoWindow(ClaimedChunk claimedChunk) {
@@ -32,7 +37,7 @@ public abstract class Map {
                 break;
             case PLOT:
                 if (claimedChunk.getPlotChunkOwner() != null) {
-                    chunkTypeString = HuskTowns.getPlayerCache().getPlayerUsername(claimedChunk.getPlotChunkOwner())  + "'s Plot Ⓟ";
+                    chunkTypeString = HuskTowns.getPlayerCache().getPlayerUsername(claimedChunk.getPlotChunkOwner()) + "'s Plot Ⓟ";
                 } else {
                     chunkTypeString = "Unclaimed Plot Ⓟ";
                 }

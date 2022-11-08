@@ -1,12 +1,12 @@
 package net.william278.husktowns.hook.luckperms;
 
-import net.william278.husktowns.HuskTowns;
-import net.william278.husktowns.cache.PlayerCache;
-import net.william278.husktowns.town.TownRole;
 import net.luckperms.api.context.ContextCalculator;
 import net.luckperms.api.context.ContextConsumer;
 import net.luckperms.api.context.ContextSet;
 import net.luckperms.api.context.ImmutableContextSet;
+import net.william278.husktowns.HuskTowns;
+import net.william278.husktowns.cache.PlayerCache;
+import net.william278.husktowns.town.TownRole;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;

@@ -1,8 +1,8 @@
 package net.william278.husktowns.util;
 
 import de.themoep.minedown.MineDown;
-import net.william278.husktowns.MessageManager;
 import net.md_5.bungee.api.chat.BaseComponent;
+import net.william278.husktowns.MessageManager;
 
 import java.util.ArrayList;
 

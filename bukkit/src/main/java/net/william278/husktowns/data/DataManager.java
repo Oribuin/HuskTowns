@@ -8,7 +8,11 @@ import net.william278.husktowns.MessageManager;
 import net.william278.husktowns.cache.CacheStatus;
 import net.william278.husktowns.cache.ClaimCache;
 import net.william278.husktowns.chunk.ClaimedChunk;
-import net.william278.husktowns.command.*;
+import net.william278.husktowns.command.ClaimListCommand;
+import net.william278.husktowns.command.InviteCommand;
+import net.william278.husktowns.command.MapCommand;
+import net.william278.husktowns.command.TownBonusCommand;
+import net.william278.husktowns.command.TownListCommand;
 import net.william278.husktowns.config.Settings;
 import net.william278.husktowns.data.message.CrossServerMessageHandler;
 import net.william278.husktowns.data.message.Message;
@@ -16,7 +20,16 @@ import net.william278.husktowns.events.ClaimEvent;
 import net.william278.husktowns.events.TownCreateEvent;
 import net.william278.husktowns.events.TownDisbandEvent;
 import net.william278.husktowns.events.UnClaimEvent;
-import net.william278.husktowns.flags.*;
+import net.william278.husktowns.flags.ExplosionDamageFlag;
+import net.william278.husktowns.flags.FireDamageFlag;
+import net.william278.husktowns.flags.Flag;
+import net.william278.husktowns.flags.MobGriefingFlag;
+import net.william278.husktowns.flags.MonsterSpawningFlag;
+import net.william278.husktowns.flags.PublicBuildAccessFlag;
+import net.william278.husktowns.flags.PublicContainerAccessFlag;
+import net.william278.husktowns.flags.PublicFarmAccessFlag;
+import net.william278.husktowns.flags.PublicInteractAccessFlag;
+import net.william278.husktowns.flags.PvpFlag;
 import net.william278.husktowns.hook.EconomyHook;
 import net.william278.husktowns.teleport.TeleportationHandler;
 import net.william278.husktowns.teleport.TeleportationPoint;
@@ -24,7 +37,12 @@ import net.william278.husktowns.town.Town;
 import net.william278.husktowns.town.TownBonus;
 import net.william278.husktowns.town.TownInvite;
 import net.william278.husktowns.town.TownRole;
-import net.william278.husktowns.util.*;
+import net.william278.husktowns.util.AutoClaimUtil;
+import net.william278.husktowns.util.ClaimViewerUtil;
+import net.william278.husktowns.util.EventCannon;
+import net.william278.husktowns.util.PageChatList;
+import net.william278.husktowns.util.RegexUtil;
+import net.william278.husktowns.util.TownLimitsUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -32,8 +50,19 @@ import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.StringJoiner;
+import java.util.TreeMap;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
@@ -264,8 +293,7 @@ public class DataManager {
                         case PublicContainerAccessFlag.FLAG_IDENTIFIER -> 9;
                         case PublicBuildAccessFlag.FLAG_IDENTIFIER -> 10;
                         case PublicFarmAccessFlag.FLAG_IDENTIFIER -> 11;
-                        default ->
-                                throw new IllegalStateException("Unexpected flag identifier value: " + flag.getIdentifier());
+                        default -> throw new IllegalStateException("Unexpected flag identifier value: " + flag.getIdentifier());
                     };
                     statement.setBoolean(flagIndex, flag.isFlagSet());
                 }
@@ -1220,7 +1248,7 @@ public class DataManager {
                 }
                 final TownRole currentUserToPromoteRole = getTownRole(uuidToPromote, connection);
                 final TownRole promoterRole = getTownRole(player.getUniqueId(), connection);
-                if (currentUserToPromoteRole.weight() >= promoterRole.weight()-1) {
+                if (currentUserToPromoteRole.weight() >= promoterRole.weight() - 1) {
                     MessageManager.sendMessage(player, "error_cant_promote_outranked");
                     return;
                 }

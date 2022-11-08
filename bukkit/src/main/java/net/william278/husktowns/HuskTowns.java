@@ -6,29 +6,49 @@ import dev.dejvokep.boostedyaml.settings.dumper.DumperSettings;
 import dev.dejvokep.boostedyaml.settings.general.GeneralSettings;
 import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
+import net.william278.desertwell.UpdateChecker;
 import net.william278.desertwell.Version;
-import net.william278.husktowns.command.*;
+import net.william278.husktowns.cache.ClaimCache;
+import net.william278.husktowns.cache.PlayerCache;
+import net.william278.husktowns.cache.TownBonusesCache;
+import net.william278.husktowns.cache.TownDataCache;
+import net.william278.husktowns.command.AdminClaimCommand;
+import net.william278.husktowns.command.AdminTownCommand;
+import net.william278.husktowns.command.AutoClaimCommand;
+import net.william278.husktowns.command.ClaimCommand;
+import net.william278.husktowns.command.ClaimListCommand;
+import net.william278.husktowns.command.CommandBase;
+import net.william278.husktowns.command.DemoteCommand;
+import net.william278.husktowns.command.EvictCommand;
+import net.william278.husktowns.command.FarmCommand;
+import net.william278.husktowns.command.HuskTownsCommand;
+import net.william278.husktowns.command.IgnoreClaimsCommand;
+import net.william278.husktowns.command.InviteCommand;
+import net.william278.husktowns.command.MapCommand;
+import net.william278.husktowns.command.PlotCommand;
+import net.william278.husktowns.command.PromoteCommand;
+import net.william278.husktowns.command.TownBonusCommand;
+import net.william278.husktowns.command.TownChatCommand;
+import net.william278.husktowns.command.TownCommand;
+import net.william278.husktowns.command.TownListCommand;
+import net.william278.husktowns.command.TransferCommand;
+import net.william278.husktowns.command.UnClaimCommand;
 import net.william278.husktowns.config.Settings;
 import net.william278.husktowns.data.message.pluginmessage.PluginMessageReceiver;
 import net.william278.husktowns.data.message.redis.RedisReceiver;
 import net.william278.husktowns.data.sql.Database;
 import net.william278.husktowns.data.sql.MySQL;
 import net.william278.husktowns.data.sql.SQLite;
+import net.william278.husktowns.hook.EconomyHook;
+import net.william278.husktowns.hook.HuskHomesHook;
 import net.william278.husktowns.hook.luckperms.LuckPermsHook;
 import net.william278.husktowns.hook.map.BlueMap;
 import net.william278.husktowns.hook.map.DynMap;
-import net.william278.husktowns.hook.HuskHomesHook;
-import net.william278.husktowns.hook.EconomyHook;
 import net.william278.husktowns.hook.map.Map;
 import net.william278.husktowns.hook.map.SquareMap;
 import net.william278.husktowns.listener.EventListener;
-import net.william278.husktowns.cache.TownBonusesCache;
 import net.william278.husktowns.town.TownInvite;
-import net.william278.husktowns.cache.ClaimCache;
-import net.william278.husktowns.cache.PlayerCache;
-import net.william278.husktowns.cache.TownDataCache;
 import net.william278.husktowns.util.PlayerList;
-import net.william278.desertwell.UpdateChecker;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
@@ -39,7 +59,11 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
@@ -263,7 +287,7 @@ public final class HuskTowns extends JavaPlugin {
             getLatestVersionIfOutdated().thenAccept(newestVersion ->
                     newestVersion.ifPresent(newVersion -> getLogger().log(Level.WARNING,
                             "An update is available for HuskHomes, v" + newVersion
-                            + " (Currently running v" + getDescription().getVersion() + ")")));
+                                    + " (Currently running v" + getDescription().getVersion() + ")")));
         }
 
         // Fetch plugin messages from file

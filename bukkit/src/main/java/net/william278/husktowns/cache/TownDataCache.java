@@ -1,8 +1,8 @@
 package net.william278.husktowns.cache;
 
 import net.william278.husktowns.HuskTowns;
-import net.william278.husktowns.data.DataManager;
 import net.william278.husktowns.chunk.ClaimedChunk;
+import net.william278.husktowns.data.DataManager;
 import net.william278.husktowns.flags.Flag;
 
 import java.util.HashMap;

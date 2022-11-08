@@ -1,7 +1,7 @@
 package net.william278.husktowns.hook;
 
-import net.william278.husktowns.HuskTowns;
 import net.milkbowl.vault.economy.Economy;
+import net.william278.husktowns.HuskTowns;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;

@@ -16,8 +16,8 @@ public class AccessManager {
     /**
      * Returns the {@link ClaimedChunk.PlayerAccess} a player has within this claimed chunk
      *
-     * @param uuid The UUID of the {@link Player} to check
-     * @param actionType The {@link ActionType} the player may or may not be able to perform
+     * @param uuid               The UUID of the {@link Player} to check
+     * @param actionType         The {@link ActionType} the player may or may not be able to perform
      * @param doPermissionChecks Whether to carry out permission checks for admin claim access
      * @return The {@link ClaimedChunk.PlayerAccess} the player has in this chunk
      */
@@ -87,8 +87,8 @@ public class AccessManager {
     /**
      * Returns the {@link ClaimedChunk.PlayerAccess} a player has within this claimed chunk
      *
-     * @param player The {@link Player} to check
-     * @param actionType The {@link ActionType} the player may or may not be able to perform
+     * @param player             The {@link Player} to check
+     * @param actionType         The {@link ActionType} the player may or may not be able to perform
      * @param doPermissionChecks Whether to carry out permission checks for admin claim access
      * @return The {@link ClaimedChunk.PlayerAccess} the player has in this chunk
      */

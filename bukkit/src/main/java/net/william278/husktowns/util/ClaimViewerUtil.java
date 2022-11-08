@@ -2,16 +2,23 @@ package net.william278.husktowns.util;
 
 import net.william278.husktowns.HuskTowns;
 import net.william278.husktowns.MessageManager;
-import net.william278.husktowns.cache.Cache;
 import net.william278.husktowns.cache.ClaimCache;
 import net.william278.husktowns.chunk.ClaimedChunk;
 import net.william278.husktowns.town.Town;
-import org.bukkit.*;
-import org.bukkit.block.Block;
+import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
+import org.bukkit.ChunkSnapshot;
+import org.bukkit.Color;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -43,12 +50,10 @@ public class ClaimViewerUtil {
             return;
         }
         switch (chunk.getChunkType()) {
-            case REGULAR ->
-                    MessageManager.sendMessage(player, "regular_chunk_claimed_by", chunk.getTown(), Integer.toString(chunkToInspect.getX()),
-                            Integer.toString(chunkToInspect.getZ()), chunkToInspect.getWorld().getName());
-            case FARM ->
-                    MessageManager.sendMessage(player, "farm_chunk_claimed_by", chunk.getTown(), Integer.toString(chunkToInspect.getX()),
-                            Integer.toString(chunkToInspect.getZ()), chunkToInspect.getWorld().getName());
+            case REGULAR -> MessageManager.sendMessage(player, "regular_chunk_claimed_by", chunk.getTown(), Integer.toString(chunkToInspect.getX()),
+                    Integer.toString(chunkToInspect.getZ()), chunkToInspect.getWorld().getName());
+            case FARM -> MessageManager.sendMessage(player, "farm_chunk_claimed_by", chunk.getTown(), Integer.toString(chunkToInspect.getX()),
+                    Integer.toString(chunkToInspect.getZ()), chunkToInspect.getWorld().getName());
             case PLOT -> {
                 UUID plotOwner = chunk.getPlotChunkOwner();
                 if (plotOwner != null) {

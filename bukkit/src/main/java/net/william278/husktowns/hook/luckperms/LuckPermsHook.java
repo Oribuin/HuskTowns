@@ -1,9 +1,9 @@
 package net.william278.husktowns.hook.luckperms;
 
-import net.william278.husktowns.HuskTowns;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.context.ContextCalculator;
 import net.luckperms.api.context.ContextManager;
+import net.william278.husktowns.HuskTowns;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;

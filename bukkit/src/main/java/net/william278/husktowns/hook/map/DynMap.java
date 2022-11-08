@@ -18,6 +18,7 @@ public class DynMap extends Map {
     private DynmapAPI getDynMapAPI() {
         return (DynmapAPI) Bukkit.getPluginManager().getPlugin("dynmap");
     }
+
     private static final HuskTowns plugin = HuskTowns.getInstance();
 
     // Returns the marker set used for town claims
@@ -71,10 +72,14 @@ public class DynMap extends Map {
             double[] x = new double[4];
             double[] z = new double[4];
 
-            x[0] = claimedChunk.getChunkX() * 16; z[0] = claimedChunk.getChunkZ() * 16;
-            x[1] = (claimedChunk.getChunkX() * 16) + 16; z[1] = (claimedChunk.getChunkZ() * 16);
-            x[2] = (claimedChunk.getChunkX() * 16) + 16; z[2] = (claimedChunk.getChunkZ() * 16) + 16;
-            x[3] = (claimedChunk.getChunkX() * 16); z[3] = (claimedChunk.getChunkZ() * 16) + 16;
+            x[0] = claimedChunk.getChunkX() * 16;
+            z[0] = claimedChunk.getChunkZ() * 16;
+            x[1] = (claimedChunk.getChunkX() * 16) + 16;
+            z[1] = (claimedChunk.getChunkZ() * 16);
+            x[2] = (claimedChunk.getChunkX() * 16) + 16;
+            z[2] = (claimedChunk.getChunkZ() * 16) + 16;
+            x[3] = (claimedChunk.getChunkX() * 16);
+            z[3] = (claimedChunk.getChunkZ() * 16) + 16;
 
             // Define the marker
             AreaMarker marker = markerSet.createAreaMarker(markerId, claimedChunk.getTown(), false,

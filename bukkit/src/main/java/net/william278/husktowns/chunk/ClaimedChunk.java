@@ -34,16 +34,17 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Create a new ClaimedChunk object as a plot chunk with an owner and list of members
-     * @param server The ID of the server on the proxy that the chunk is on
-     * @param worldName The name of the world the chunk is on
-     * @param chunkX The x position on the chunk grid the claim is on
-     * @param chunkZ The z position on the chunk grid the claim is on
-     * @param claimerUUID The {@link UUID} of the person claiming the chunk
-     * @param chunkType The {@link ChunkType} of the chunk
-     * @param plotChunkOwner The {@link UUID} of the plot chunk owner
+     *
+     * @param server           The ID of the server on the proxy that the chunk is on
+     * @param worldName        The name of the world the chunk is on
+     * @param chunkX           The x position on the chunk grid the claim is on
+     * @param chunkZ           The z position on the chunk grid the claim is on
+     * @param claimerUUID      The {@link UUID} of the person claiming the chunk
+     * @param chunkType        The {@link ChunkType} of the chunk
+     * @param plotChunkOwner   The {@link UUID} of the plot chunk owner
      * @param plotChunkMembers {@link HashSet} of {@link UUID}s of plot chunk members; empty for no members
-     * @param town The name of the town who owns the chunk
-     * @param timestamp The time since epoch of when the chunk was claimed
+     * @param town             The name of the town who owns the chunk
+     * @param timestamp        The time since epoch of when the chunk was claimed
      */
     public ClaimedChunk(String server, String worldName, int chunkX, int chunkZ, UUID claimerUUID, ChunkType chunkType, UUID plotChunkOwner, HashSet<UUID> plotChunkMembers, String town, long timestamp) {
         super(server, worldName, chunkX, chunkZ);
@@ -57,14 +58,15 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Create a new ClaimedChunk object
-     * @param server The ID of the server on the proxy that the chunk is on
-     * @param worldName The name of the world the chunk is on
-     * @param chunkX The x position on the chunk grid the claim is on
-     * @param chunkZ The z position on the chunk grid the claim is on
+     *
+     * @param server      The ID of the server on the proxy that the chunk is on
+     * @param worldName   The name of the world the chunk is on
+     * @param chunkX      The x position on the chunk grid the claim is on
+     * @param chunkZ      The z position on the chunk grid the claim is on
      * @param claimerUUID The {@link UUID} of the person claiming the chunk
-     * @param chunkType The {@link ChunkType} of the chunk
-     * @param town The name of the town who owns the chunk
-     * @param timestamp The time since epoch of when the chunk was claimed
+     * @param chunkType   The {@link ChunkType} of the chunk
+     * @param town        The name of the town who owns the chunk
+     * @param timestamp   The time since epoch of when the chunk was claimed
      */
     public ClaimedChunk(String server, String worldName, int chunkX, int chunkZ, UUID claimerUUID, ChunkType chunkType, String town, long timestamp) {
         super(server, worldName, chunkX, chunkZ);
@@ -77,10 +79,11 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Have a {@link Player} create a new claimed chunk object at the specified location
-     * @param player The {@link Player} doing the claiming
-     * @param server The ID of the server on the proxy where the claim will be made
+     *
+     * @param player   The {@link Player} doing the claiming
+     * @param server   The ID of the server on the proxy where the claim will be made
      * @param location The {@link Location} to claim
-     * @param town The name of the {@link Player}'s town
+     * @param town     The name of the {@link Player}'s town
      */
     public ClaimedChunk(Player player, String server, Location location, String town) {
         super(server, location.getWorld().getName(), location.getChunk().getX(), location.getChunk().getZ());
@@ -93,6 +96,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Set the name of the town who owns this chunk
+     *
      * @param newName The town who now owns this chunk
      */
     public void updateTownName(String newName) {
@@ -101,6 +105,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Add a plot member to this chunk
+     *
      * @param plotMember {@link UUID} to add
      */
     public void addPlotMember(UUID plotMember) {
@@ -109,6 +114,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Removes a plot member from this chunk
+     *
      * @param plotMember {@link UUID} to remove
      */
     public void removePlotMember(UUID plotMember) {
@@ -117,6 +123,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Returns the time from epoch of when this chunk was claimed
+     *
      * @return When this chunk was claimed
      */
     public long getClaimTimestamp() {
@@ -125,6 +132,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Returns the formatted timestamp string of when this chunk was claimed
+     *
      * @return When this chunk was claimed
      */
     public String getFormattedClaimTime() {
@@ -136,6 +144,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Returns the {@link UUID} of the claimer of this chunk
+     *
      * @return Claimer's {@link UUID}
      */
     public UUID getClaimerUUID() {
@@ -144,6 +153,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Returns the {@link UUID} of the plot chunk owner (Returns {@code null} if it is unassigned or not a plot)
+     *
      * @return Plot owner's {@link UUID}
      */
     public UUID getPlotChunkOwner() {
@@ -152,6 +162,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Returns a list of plot chunk member {@link UUID}s
+     *
      * @return The plot chunk members
      */
     public HashSet<UUID> getPlotChunkMembers() {
@@ -160,6 +171,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Returns the {@link ChunkType} of this chunk
+     *
      * @return the {@link ChunkType}
      */
     public ChunkType getChunkType() {
@@ -168,6 +180,7 @@ public class ClaimedChunk extends ChunkLocation {
 
     /**
      * Returns the name of the town who own this cv
+     *
      * @return the town name
      */
     public String getTown() {

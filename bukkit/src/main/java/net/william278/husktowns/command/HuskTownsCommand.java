@@ -64,14 +64,10 @@ public class HuskTownsCommand extends CommandBase {
 
         for (Cache cache : caches) {
             switch (cache.getStatus()) {
-                case UNINITIALIZED ->
-                        status.append("\n[• ").append(cache.getName()).append(" cache:](white) [uninitialized ✖](#ff3300 show_text=&#ff3300&This cache has not been initialized from the database by the system yet; ").append(cache.getName().toLowerCase()).append(" functions will not be available until it has been initialized.\n&7").append(cache.getItemsLoaded()).append(" item\\(s\\) loaded)");
-                case UPDATING ->
-                        status.append("\n[• ").append(cache.getName()).append(" cache:](white) [updating ♦](#ff6b21 show_text=&#ff6b21&The system is currently initializing this cache and is loading data into it from the database; ").append(cache.getName().toLowerCase()).append(" functions will not be available yet.\n&7").append(cache.getItemsLoaded()).append("/").append(cache.getItemsToLoad()).append(" item\\(s\\) loaded) [(⌚ ").append(cache.getTimeSinceInitialization()).append(" sec)](gray show_text=&7How long this cache has been processing for in seconds.)");
-                case LOADED ->
-                        status.append("\n[• ").append(cache.getName()).append(" cache:](white) [loaded ✔](#00ed2f show_text=&#00ed2f&This cache has been initialized and is actively loaded. Additional data will be onboarded as necessary\n&7").append(cache.getItemsLoaded()).append(" item\\(s\\) loaded)");
-                default ->
-                        status.append("\n[• ").append(cache.getName()).append(" cache:](white) [error ✖](#ff3300 show_text=&#00ed2f&This cache failed to initialize due to an error; check console logs for details\n&7").append(cache.getItemsLoaded()).append(" item\\(s\\) loaded)");
+                case UNINITIALIZED -> status.append("\n[• ").append(cache.getName()).append(" cache:](white) [uninitialized ✖](#ff3300 show_text=&#ff3300&This cache has not been initialized from the database by the system yet; ").append(cache.getName().toLowerCase()).append(" functions will not be available until it has been initialized.\n&7").append(cache.getItemsLoaded()).append(" item\\(s\\) loaded)");
+                case UPDATING -> status.append("\n[• ").append(cache.getName()).append(" cache:](white) [updating ♦](#ff6b21 show_text=&#ff6b21&The system is currently initializing this cache and is loading data into it from the database; ").append(cache.getName().toLowerCase()).append(" functions will not be available yet.\n&7").append(cache.getItemsLoaded()).append("/").append(cache.getItemsToLoad()).append(" item\\(s\\) loaded) [(⌚ ").append(cache.getTimeSinceInitialization()).append(" sec)](gray show_text=&7How long this cache has been processing for in seconds.)");
+                case LOADED -> status.append("\n[• ").append(cache.getName()).append(" cache:](white) [loaded ✔](#00ed2f show_text=&#00ed2f&This cache has been initialized and is actively loaded. Additional data will be onboarded as necessary\n&7").append(cache.getItemsLoaded()).append(" item\\(s\\) loaded)");
+                default -> status.append("\n[• ").append(cache.getName()).append(" cache:](white) [error ✖](#ff3300 show_text=&#00ed2f&This cache failed to initialize due to an error; check console logs for details\n&7").append(cache.getItemsLoaded()).append(" item\\(s\\) loaded)");
             }
             debugString.append(cache.getName().toLowerCase().replace(" ", "_")).append(":").append(cache.getStatus().toString().toLowerCase()).append(":").append(cache.getItemsLoaded()).append("/").append(cache.getItemsToLoad()).append(", ");
         }
@@ -152,11 +148,11 @@ public class HuskTownsCommand extends CommandBase {
                             newestVersion.ifPresentOrElse(
                                     newVersion -> sender.spigot().sendMessage(
                                             new MineDown("[HuskTowns](#00fb9a bold) [| A new version of HuskHomes is available!"
-                                                         + " (v" + newVersion + " (Running: v" + plugin.getDescription().getVersion() + ")](#00fb9a)")
+                                                    + " (v" + newVersion + " (Running: v" + plugin.getDescription().getVersion() + ")](#00fb9a)")
                                                     .toComponent()),
                                     () -> sender.spigot().sendMessage(
                                             new MineDown("[HuskTowns](#00fb9a bold) [| HuskHomes is up-to-date."
-                                                         + " (Running: v" + plugin.getDescription().getVersion() + ")](#00fb9a)")
+                                                    + " (Running: v" + plugin.getDescription().getVersion() + ")](#00fb9a)")
                                                     .toComponent())));
                     break;
                 case "reload":
